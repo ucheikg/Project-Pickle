@@ -10,10 +10,18 @@ public class playe_movement : MonoBehaviour
 
     [Header("Movement")]
     public float moveSpeed;
+
+    public float groundDrag;
+
+    [Header("Ground Check")]
+    public float playerHeight;
+    public LayerMask whatIsGround;
+    bool grounded;
+
     public Transform orientation;
 
-    float horizontalinput;
-    float verticalinput;
+    float horizontalInput;
+    float verticalInput;
 
     Vector3 moveDirection;
     
@@ -27,7 +35,20 @@ public class playe_movement : MonoBehaviour
 
     private void Update()
     {
+
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+
         MyInput();
+
+        if (grounded)
+        {
+            rb.drag = groundDrag;
+
+        }
+        else
+        {
+            rb.drag = 0;
+        }
     }
 
     private void FixedUpdate()
@@ -37,13 +58,13 @@ public class playe_movement : MonoBehaviour
 
     private void MyInput()
     {
-        horizontalinput = Input.GetAxisRaw("Horizontal");
-        verticalinput = Input.GetAxisRaw("Verticle");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Verticle");
     }
 
     private void MovePlayer()
     {
-        moveDirection = orientation.forward * verticalinput + orientation.right * horizontalinput;
+        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
     }
 
