@@ -1,28 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class playe_movement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float speed = 3;
-    void Start()
+
+    [Header("Movement")]
+    public float moveSpeed;
+    public Transform orientation;
+
+    float horizontalinput;
+    float verticalinput;
+
+    Vector3 moveDirection;
+    
+    Rigidbody rb;
+
+    private void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        while (Input.GetKeyDown(KeyCode.W))
-        {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        }
-        while (Input.GetKeyDown(KeyCode.S))
-        {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime); 
-        }
+        MyInput();
     }
+
+    private void FixedUpdate()
+    {
+        MovePlayer();
+    }
+
+    private void MyInput()
+    {
+        horizontalinput = Input.GetAxisRaw("Horizontal");
+        verticalinput = Input.GetAxisRaw("Verticle");
+    }
+
+    private void MovePlayer()
+    {
+        moveDirection = orientation.forward * verticalinput + orientation.right * horizontalinput;
+        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+    }
+
 }
