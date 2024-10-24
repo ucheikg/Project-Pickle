@@ -10,7 +10,12 @@ public class playe_movement : MonoBehaviour
 
     [Header("Movement")]
     public float moveSpeed;
-
+    float horizontalInput;
+    float verticalInput;
+    public float jumpForce;
+    public float jumpCooldown;
+    public float airMultiplier;
+    bool readyToJump;
     public float groundDrag;
 
     [Header("Ground Check")]
@@ -20,8 +25,10 @@ public class playe_movement : MonoBehaviour
 
     public Transform orientation;
 
-    float horizontalInput;
-    float verticalInput;
+ 
+
+    [Header("Keybinds")]
+    public KeyCode jumpKey = KeyCode.Space;
 
     Vector3 moveDirection;
     
@@ -40,6 +47,8 @@ public class playe_movement : MonoBehaviour
 
         MyInput();
 
+        SpeedControl();
+
         if (grounded)
         {
             rb.drag = groundDrag;
@@ -54,18 +63,57 @@ public class playe_movement : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
+
+
     }
 
     private void MyInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Verticle");
+        verticalInput = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetKey(jumpKey) && readyToJump && grounded)
+        {
+            readyToJump = false;
+
+            Jump();
+
+            Invoke(nameof(ResetJump), jumpCooldown);
+        }
     }
 
     private void MovePlayer()
     {
+        if (grounded)
+        {
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        }
+        else if(!grounded!)
+        {
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        }
+        
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
     }
+    private void SpeedControl()
+    {
+        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
+        if (flatVel.magnitude > moveSpeed)
+        {
+            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            rb.velocity =  new Vector3 (limitedVel.x, rb.velocity.y, limitedVel.z);
+        }
+    }
+    private void Jump()
+    {
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    }
+    private void ResetJump()
+    {
+        readyToJump = true;
+    }
 }

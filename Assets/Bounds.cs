@@ -9,7 +9,7 @@ public class Bounds : MonoBehaviour
     public float x, y, z;
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.tag== "player")
+        if(other.gameObject.tag== "Player")
         {
             player.position = new Vector3(x, y, z);
         }
