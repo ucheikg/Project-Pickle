@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,25 +11,26 @@ public class playe_movement : MonoBehaviour
     public float moveSpeed;
     float horizontalInput;
     float verticalInput;
-    public float jumpForce;
-    public float jumpCooldown;
+    public float DashForce;
+    public float DashCooldown;
     public float airMultiplier;
-    bool readyToJump;
+    bool readyToDash = true;
     public float groundDrag;
 
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
-    bool grounded;
+    bool grounded = true;
 
     public Transform orientation;
 
  
 
     [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space;
+    public KeyCode dashKey = KeyCode.LeftShift;
 
     Vector3 moveDirection;
+    Vector3 dashDirection;
     
     Rigidbody rb;
 
@@ -38,6 +38,7 @@ public class playe_movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        readyToDash = true;
     }
 
     private void Update()
@@ -72,27 +73,18 @@ public class playe_movement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKey(jumpKey) && readyToJump && grounded)
+        if (Input.GetKey(dashKey) && readyToDash)
         {
-            readyToJump = false;
+            readyToDash = false;
 
-            Jump();
+            Dash();
 
-            Invoke(nameof(ResetJump), jumpCooldown);
+            Invoke(nameof(ResetDash), DashCooldown);
         }
     }
 
     private void MovePlayer()
-    {
-        if (grounded)
-        {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-        }
-        else if(!grounded!)
-        {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
-        }
-        
+    {   
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
     }
@@ -106,14 +98,14 @@ public class playe_movement : MonoBehaviour
             rb.velocity =  new Vector3 (limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }
-    private void Jump()
+    private void Dash()
     {
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        dashDirection = orientation.right * horizontalInput;
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z); 
+        rb.AddForce(dashDirection.normalized * DashForce, ForceMode.Impulse);
     }
-    private void ResetJump()
+    private void ResetDash()
     {
-        readyToJump = true;
+        readyToDash = true;
     }
 }
