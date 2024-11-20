@@ -27,7 +27,7 @@ public class enemymovement : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
-    private void Awake()
+    private void Start()
     {
         player = GameObject.Find("PlayerObj").transform;
         agent = GetComponent<NavMeshAgent>();
@@ -105,11 +105,5 @@ public class enemymovement : MonoBehaviour
     private void DestroyEnemy()
     {
         Destroy(gameObject);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }

@@ -68,21 +68,21 @@ public class Shoot : MonoBehaviour
         float x = Random.Range(-spread, spread);
         float y = Random.Range(-spread, spread);
 
-        Vector3 direction = fpsCam.transform.forward + new Vector3(x,y, 0);  
+        Vector3 direction = fpsCam.transform.forward + new Vector3(x,y, 0);
 
         if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, whatIsEnemy))
         {
             Debug.Log(rayHit.collider.name);
             if (rayHit.collider.CompareTag("Enemy"))
-            {
+                rayHit.collider.GetComponent<enemymovement>().TakeDamage(damage);
 
-            }
+            bulletsLeft--;
+            bulletsShot--;
+            Invoke("ResetShot", timeBetweenShooting);
+            if (bulletsShot > 0 && bulletsLeft > 0)
+                Invoke("Pow", timeBetweenShots);
+
         }
-
-        bulletsLeft--;
-        bulletsShot--;
-        Invoke("ResetShot", timeBetweenShooting);
-        if (bulletsShot > 0 && bulletsLeft > 0)
-        Invoke("Pow", timeBetweenShots);
     }
 }
+
