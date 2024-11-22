@@ -11,12 +11,13 @@ public class playe_movement : MonoBehaviour
     public float moveSpeed;
     float horizontalInput;
     float verticalInput;
+    public float airMultiplier;
+    public float groundDrag;
+    
+    bool readyToDash = true;
     public float DashForce;
     public float DashCooldown;
-    public float airMultiplier;
-    bool readyToDash = true;
-    public float groundDrag;
-
+    
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;

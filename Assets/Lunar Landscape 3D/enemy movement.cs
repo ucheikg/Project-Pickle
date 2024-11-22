@@ -29,7 +29,7 @@ public class enemymovement : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.Find("PlayerObj").transform;
+        player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
