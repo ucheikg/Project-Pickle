@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class attack : MonoBehaviour
 {
-    private int damage = 1;
+    private bool deceased = false;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             Destroy(other.gameObject);
         }
+    }
+
+    public void Finished()
+    {
+        deceased = true;
     }
 }

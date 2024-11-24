@@ -13,6 +13,7 @@ public class enemymovement : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
     public float health;
     public GameObject projectile;
+    private bool shoot = true;
 
     [Header("patrol")]
     public Vector3 walkPoint;
@@ -78,16 +79,19 @@ public class enemymovement : MonoBehaviour
         agent.SetDestination(transform.position);
         transform.LookAt(player);
 
-        if (!alreadyAttacked)
+        if (shoot == true)
         {
-            
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            if (!alreadyAttacked)
+            {
+
+                Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+                rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+                rb.AddForce(transform.up * 8f, ForceMode.Impulse);
 
 
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+                alreadyAttacked = true;
+                Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            }
         }
     }
 
@@ -105,5 +109,10 @@ public class enemymovement : MonoBehaviour
     private void DestroyEnemy()
     {
         Destroy(gameObject);
+    }
+
+    public void attacking()
+    {
+        shoot = false;
     }
 }
