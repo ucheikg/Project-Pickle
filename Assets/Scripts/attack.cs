@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class attack : MonoBehaviour
 {
-    private bool deceased = false;
+    public int enemies = 22;
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
@@ -13,8 +14,11 @@ public class attack : MonoBehaviour
         }
     }
 
-    public void Finished()
+    private void Update()
     {
-        deceased = true;
+        if (enemies == 0)
+        {
+            Application.Quit();
+        }
     }
 }

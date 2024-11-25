@@ -8,6 +8,7 @@ using UnityEngine.AI;
 
 public class enemymovement : MonoBehaviour
 {
+    // not my code
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
@@ -79,8 +80,6 @@ public class enemymovement : MonoBehaviour
         agent.SetDestination(transform.position);
         transform.LookAt(player);
 
-        if (shoot == true)
-        {
             if (!alreadyAttacked)
             {
 
@@ -92,27 +91,11 @@ public class enemymovement : MonoBehaviour
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), timeBetweenAttacks);
             }
-        }
     }
 
     private void ResetAttack()
     {
         alreadyAttacked = false;
     }
-
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-    }
-    private void DestroyEnemy()
-    {
-        Destroy(gameObject);
-    }
-
-    public void attacking()
-    {
-        shoot = false;
-    }
+    //
 }

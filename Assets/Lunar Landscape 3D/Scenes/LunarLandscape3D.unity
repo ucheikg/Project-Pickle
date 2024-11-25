@@ -855,6 +855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ebcf37fbcff0e24fa19650f9e5eca42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemies: 22
 --- !u!136 &288855320
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -981,7 +982,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1052872580823561691, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_Name
@@ -1039,7 +1040,8 @@ PrefabInstance:
       propertyPath: walkPointRange
       value: 50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1210,7 +1212,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1052872580823561691, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_Name
@@ -1268,7 +1270,8 @@ PrefabInstance:
       propertyPath: walkPointRange
       value: 50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -7346,7 +7349,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1052872580823561691, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_Name
@@ -7404,7 +7407,8 @@ PrefabInstance:
       propertyPath: walkPointRange
       value: 50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -7481,7 +7485,8 @@ PrefabInstance:
       propertyPath: walkPointRange
       value: 50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -7982,7 +7987,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1052872580823561691, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_Name
@@ -8040,7 +8045,8 @@ PrefabInstance:
       propertyPath: walkPointRange
       value: 50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -13797,7 +13803,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1052872580823561691, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_Name
@@ -13855,7 +13861,8 @@ PrefabInstance:
       propertyPath: walkPointRange
       value: 50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -15196,7 +15203,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1052872580823561691, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_Name
@@ -15254,7 +15261,8 @@ PrefabInstance:
       propertyPath: walkPointRange
       value: 50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -15272,7 +15280,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1052872580823561691, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_Name
@@ -15330,7 +15338,8 @@ PrefabInstance:
       propertyPath: walkPointRange
       value: 50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -16265,7 +16274,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1052872580823561691, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_Name
@@ -16323,7 +16332,8 @@ PrefabInstance:
       propertyPath: walkPointRange
       value: 50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -16525,7 +16535,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1052872580823561691, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_Name
@@ -16583,7 +16593,8 @@ PrefabInstance:
       propertyPath: walkPointRange
       value: 50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -22638,7 +22649,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1052872580823561691, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
       propertyPath: m_Name
@@ -22696,7 +22707,8 @@ PrefabInstance:
       propertyPath: walkPointRange
       value: 50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 469041842671199687, guid: a1851b4dc013c8544962d3c74ef5c683, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

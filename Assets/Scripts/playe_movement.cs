@@ -1,23 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class playe_movement : MonoBehaviour
 {
-
     [Header("Movement")]
     public float moveSpeed;
     float horizontalInput;
     float verticalInput;
     public float airMultiplier;
     public float groundDrag;
-    
+    //this is my code
     bool readyToDash = true;
     public float DashForce;
     public float DashCooldown;
-    
+    //
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
@@ -26,12 +26,14 @@ public class playe_movement : MonoBehaviour
     public Transform orientation;
 
  
-
+    // my code
     [Header("Keybinds")]
     public KeyCode dashKey = KeyCode.LeftShift;
-
-    Vector3 moveDirection;
     Vector3 dashDirection;
+    //
+    
+    Vector3 moveDirection;
+   
     
     Rigidbody rb;
 
@@ -39,7 +41,9 @@ public class playe_movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        // my code
         readyToDash = true;
+        //
     }
 
     private void Update()
@@ -60,6 +64,11 @@ public class playe_movement : MonoBehaviour
         {
             rb.drag = 0;
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     private void FixedUpdate()
@@ -73,7 +82,7 @@ public class playe_movement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-
+        //my code
         if (Input.GetKey(dashKey) && readyToDash)
         {
             readyToDash = false;
@@ -82,6 +91,7 @@ public class playe_movement : MonoBehaviour
 
             Invoke(nameof(ResetDash), DashCooldown);
         }
+        //
     }
 
     private void MovePlayer()
@@ -99,6 +109,8 @@ public class playe_movement : MonoBehaviour
             rb.velocity =  new Vector3 (limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }
+    
+    // my code
     private void Dash()
     {
         dashDirection = orientation.right * horizontalInput;
@@ -109,4 +121,6 @@ public class playe_movement : MonoBehaviour
     {
         readyToDash = true;
     }
+    //
+
 }
