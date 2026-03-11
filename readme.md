@@ -1,1 +1,1 @@
-Read me
+this is my first unity project, which has users play as a pickle marooned on a asteroid as enemies know as burgerians and dogians push foward toward the players location. Unfortunatly you jump thrusters are broken so you must utilize the asteroids gravity and dash into the side of hills to launch yourself into the air to maintain moblity during combat.
